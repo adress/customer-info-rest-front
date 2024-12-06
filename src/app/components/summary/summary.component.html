@@ -1,0 +1,29 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg" style="width: 100%; max-width: 500px">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Resumen del Cliente</h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="clientData; else noData">
+        <p><strong>Nombre:</strong> {{ clientData.firstName }}</p>
+        <p><strong>Apellido:</strong> {{ clientData.lastName }}</p>
+        <p><strong>Teléfono:</strong> {{ clientData.phone }}</p>
+        <p><strong>Dirección:</strong> {{ clientData.address }}</p>
+        <p><strong>Ciudad:</strong> {{ clientData.city }}</p>
+        <div class="text-center mt-4">
+          <button class="btn btn-secondary px-5" (click)="onBack()">
+            Volver
+          </button>
+        </div>
+      </div>
+      <ng-template #noData>
+        <p>No se encontraron datos del cliente.</p>
+        <div class="text-center mt-4">
+          <button class="btn btn-secondary px-5" (click)="onBack()">
+            Volver
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

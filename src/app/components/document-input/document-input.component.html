@@ -1,0 +1,58 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg" style="width: 100%; max-width: 500px">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Consulta de Cliente</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="onSearch()" novalidate>
+        <!-- Campo: Tipo de Documento -->
+        <div class="mb-4">
+          <label for="documentType" class="form-label">Tipo de Documento</label>
+          <select
+            id="documentType"
+            class="form-select"
+            formControlName="documentType"
+          >
+            <option value="" selected>Seleccione...</option>
+            <option value="C">Cédula de Ciudadanía</option>
+            <option value="P">Pasaporte</option>
+          </select>
+          <div *ngIf="getErrorMessage('documentType')" class="invalid-feedback">
+            {{ getErrorMessage("documentType") }}
+          </div>
+        </div>
+
+        <!-- Campo: Número de Documento -->
+        <div class="mb-4">
+          <label for="documentNumber" class="form-label"
+            >Número de Documento</label
+          >
+          <input
+            id="documentNumber"
+            type="text"
+            class="form-control"
+            formControlName="documentNumber"
+            appMaskThousands
+          />
+          <div
+            *ngIf="getErrorMessage('documentNumber')"
+            class="invalid-feedback"
+          >
+            {{ getErrorMessage("documentNumber") }}
+          </div>
+        </div>
+
+        <!-- Botón de búsqueda -->
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn btn-primary px-5"
+            [disabled]="!form.valid"
+          >
+            Buscar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
